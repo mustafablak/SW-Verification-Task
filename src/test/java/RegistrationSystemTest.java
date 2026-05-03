@@ -93,4 +93,9 @@ public class RegistrationSystemTest {
         system = null;
         System.out.println("Test sonrası temizlik yapıldı.");
     }
+    @Test
+    void TC16_InvalidDateDigits() { // BVA: Tarih kısmında fazla rakam girilmesi (Örn: 155/05/2000)
+        // Bizim kodumuz sadece 2 rakam (dd) bekliyor, 3 rakam girersek fail (false) vermeli.
+        assertFalse(system.validate("Mustafa", "Ablak", "mrt@mail.com", "155/05/2000", "Sifre1234", "Sifre1234"));
+    }
 }
